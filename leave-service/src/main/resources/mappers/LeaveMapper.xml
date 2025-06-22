@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.glaFinalProject.mapper.LeaveMapper">
+
+    <insert id="leaveRequest" parameterType="com.glaFinalProject.common.model.LeaveRequestDTO">
+        INSERT INTO
+          leave_request (
+              EMP_ID,
+              REASON,
+              LEAVE_TYPE,
+              STATUS,
+              START_DT,
+              END_DT )
+        VALUES(
+              #{employeeId},
+              #{reason},
+              #{leaveType},
+              #{status},
+              NOW(),
+              NOW()
+        )
+    </insert>
+
+    <select id="leaveHistory" parameterType="java.lang.Integer"
+            resultType="com.glaFinalProject.common.model.LeaveRequestDTO">
+        SELECT
+          EMP_ID AS employeeId,
+          REASON AS reason,
+          LEAVE_TYPE AS leaveType,
+          STATUS AS status,
+          START_DT AS startDate,
+          END_DT AS endDate
+        FROM
+        leave_request WHERE EMP_ID = #{employeeId}
+    </select>
+</mapper>
