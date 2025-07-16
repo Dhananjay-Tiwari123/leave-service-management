@@ -1,4 +1,5 @@
 package com.glaFinalProject.controller;
+
 import com.glaFinalProject.common.model.LeaveRequestDTO;
 import com.glaFinalProject.common.response.BaseRespDto;
 import com.glaFinalProject.service.LeaveService;
@@ -23,11 +24,13 @@ public class LeaveController {
         return leaveService.leaveRequest(leaveRequestDTO);
     }
 
-    @GetMapping("/api/leave/leaveHistory/{employeeId}")
-    public BaseRespDto leaveHistory(@PathVariable String employeeId){
-
-       return leaveService.leaveHistory();
-
+    @GetMapping("/api/leave/leaveHistory/{empId}")
+    public BaseRespDto leaveHistory(@PathVariable String employeeId) {
+        return leaveService.leaveHistory();
     }
 
+    @GetMapping("/api/leave/leaveBalance/{empId}")
+    public BaseRespDto leaveBalance(@PathVariable int empId) {
+        return leaveService.leaveBalance(empId);
+    }
 }

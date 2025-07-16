@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.glaFinalProject.mapper.LeaveMapper">
 
-    <insert id="leaveRequest" parameterType="com.glaFinalProject.common.model.LeaveRequestDTO">
+    <insert id="leaveRequest"  parameterType="com.glaFinalProject.common.model.LeaveRequestDTO">
         INSERT INTO
           leave_request (
               EMP_ID,
@@ -33,4 +33,45 @@
         FROM
         leave_request WHERE EMP_ID = #{employeeId}
     </select>
+
+
+    <select id="getEmpId" resultType="java.lang.Integer">
+        SELECT  A.EMP_ID
+           FROM employee A
+    </select>
+
+    <insert id="insertLeaveBalance" parameterType="com.glaFinalProject.common.model.LeaveBalanceDTO">
+
+        INSERT INTO leave_balance (
+           EMP_ID,
+           MONTH,
+           YEAR,
+           LEAVE_BALANCE,
+           LEAVE_TYPE,
+           TOTAL_LEAVE,
+           USED,
+           REMAINING
+        )
+        VALUES(
+           #{employeeId},
+           #{month},
+           #{year},
+           #{leaveBalance},
+           #{leaveType},
+           #{totalLeave},
+           #{usedLeave},
+           #{reminingLeave}
+        )
+    </insert>
+
+
+    <select id="leaveBalance" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+
+        SELECT SUM(REMAINING) AS leaveBalance
+          FROM leave_balance
+            WHERE EMP_ID = #{empId}
+
+    </select>
+
+
 </mapper>

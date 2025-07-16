@@ -1,5 +1,6 @@
 package com.glaFinalProject.service;
 
+
 import com.glaFinalProject.common.model.LeaveRequestDTO;
 import com.glaFinalProject.common.response.BaseRespDto;
 import com.glaFinalProject.common.response.SuccessRespDto;
@@ -31,4 +32,13 @@ public class LeaveService {
         successRespDto.setResp(leaveRequestDTOS);
         return successRespDto;
     }
+
+    public BaseRespDto leaveBalance(int empId) {
+        SuccessRespDto successRespDto = new SuccessRespDto();
+        int leaveBalnce = leaveMapper.leaveBalance(empId);
+        successRespDto.setResp(leaveBalnce);
+        return successRespDto;
+    }
+
+
 }
