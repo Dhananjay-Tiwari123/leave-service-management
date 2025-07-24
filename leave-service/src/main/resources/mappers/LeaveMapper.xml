@@ -73,5 +73,18 @@
 
     </select>
 
+    <select id="pendingLeave" resultType="com.glaFinalProject.common.model.LeaveRequestDTO">
+     SELECT
+        ID AS id,
+        EMP_ID AS employeeId,
+        REASON AS reason,
+        LEAVE_TYPE AS leaveType,
+        STATUS AS status,
+        START_DT AS startDate,
+        END_DT AS endDate,
+        REG_DT AS registeredDate
+    FROM leave_request WHERE STATUS IN ('PENDING')
+
+    </select>
 
 </mapper>

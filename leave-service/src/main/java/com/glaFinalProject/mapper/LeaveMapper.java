@@ -21,4 +21,7 @@ public interface LeaveMapper {
     void insertLeaveBalance(LeaveBalanceDTO leaveBalanceDTO);
 
     int leaveBalance(@Param("empId") int empId);
+
+    List<LeaveRequestDTO> pendingLeave();
+
 }

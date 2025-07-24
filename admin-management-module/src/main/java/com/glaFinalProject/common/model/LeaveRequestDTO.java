@@ -21,5 +21,4 @@ public class LeaveRequestDTO {
     private Date endDate;
     private String registeredDate;
 
-
 }

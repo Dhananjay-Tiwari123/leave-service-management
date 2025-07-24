@@ -40,5 +40,10 @@ public class LeaveService {
         return successRespDto;
     }
 
+    public BaseRespDto getPendingLeaves() {
+        SuccessRespDto successRespDto = new SuccessRespDto();
+        successRespDto.setResp(leaveMapper.pendingLeave());
+        return successRespDto;
+    }
 
 }

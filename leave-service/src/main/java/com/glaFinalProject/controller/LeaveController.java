@@ -3,6 +3,7 @@ package com.glaFinalProject.controller;
 import com.glaFinalProject.common.model.LeaveRequestDTO;
 import com.glaFinalProject.common.response.BaseRespDto;
 import com.glaFinalProject.service.LeaveService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,4 +34,11 @@ public class LeaveController {
     public BaseRespDto leaveBalance(@PathVariable int empId) {
         return leaveService.leaveBalance(empId);
     }
+
+    @GetMapping("/api/leave/pendingleaves")
+    public BaseRespDto getPendingLeaves() {
+        return leaveService.getPendingLeaves();
+    }
+
+
 }
